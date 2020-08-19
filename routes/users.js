@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const Joi = require("@hapi/joi");
 const bcrypt = require("bcryptjs");
+const dotenv = require('dotenv').config()
 
 //validation
 const registerSchema = Joi.object({
@@ -58,8 +59,10 @@ router.post("/login", async (req, res, next) => {
 
   const validPass = await bcrypt.compare(req.body.password, user.password)
   if(!validPass)return res.status(400).send('password is incorrect')
-
-  res.send("succesful login")
+  
+  const token = jwt.sign({_id: user._id}, dotenv.parsed.TOKEN_SECRET)
+  res.header('auth-token', token).send(token)
+ 
 });
 router.get("/profile", (req, res, next) => {
   res.send("PROFILE");
