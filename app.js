@@ -5,20 +5,21 @@ const cors = require("cors");
 const passport = require("passport");
 const mongoose = require("mongoose");
 const config = require('./config/database')
-console.log(config.database)
-mongoose.connect(config.database,{ useNewUrlParser: true } )
-mongoose.connection.on('connected', ()=>(
-    console.log('connected to database')
-))
-
-const app = express();
-
+const dotenv = require('dotenv').config()
+//Routes
 const users = require('./routes/users')
+ 
+//Connect to Db
+mongoose.connect(dotenv.parsed.DB_Connect,{useNewUrlParser:true}, ()=>(console.log('connected to db'))
+ )
+const app = express();
 const port = 3000;
 
+//middleware
 app.use(cors())
 app.use(express.static(path.join(__dirname, 'client/src')))
 app.use(bodyParser.json())
+
 
 app.use('/users', users)
 
