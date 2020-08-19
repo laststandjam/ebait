@@ -33,7 +33,8 @@ fishs:Fish[];
       price: 80,
       sex: true
     }
-    ]
+    ];  console.log(this.fishs)
+
   }
 
 }
