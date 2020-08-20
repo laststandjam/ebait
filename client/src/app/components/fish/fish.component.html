@@ -1,3 +1,7 @@
-<app-fish-item *ngFor="let fish of fishs" [fish]='fish'>
-   
-</app-fish-item>
+<div>
+    <ul>
+        <li *ngFor="let data of fishs">
+            {{data.price}}
+        </li>
+    </ul>
+</div>

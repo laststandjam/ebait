@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Fish} from "../../models/Fish"
+import {FishService} from "../../service/fish.service"
 
 @Component({
   selector: 'app-fish',
@@ -8,33 +9,20 @@ import {Fish} from "../../models/Fish"
 })
 export class FishComponent implements OnInit {
 fishs:Fish[];
-  constructor() { }
 
-  ngOnInit() {
-    this.fishs = [{
-      id:1,
-      speices: "Goldfish",
-      location: "LA",
-      size: 3,
-      price: 60,
-      sex: true
-    },{
-      id:1,
-      speices: "Goldfish",
-      location: "SF",
-      size: 3,
-      price: 60,
-      sex: true
-    },{
-      id:3,
-      speices: "Beta",
-      location: "LA",
-      size: 1,
-      price: 80,
-      sex: true
-    }
-    ];  console.log(this.fishs)
+constructor(private fishService:FishService) { }
 
-  }
+ngOnInit() {
+this.fetchFishs()
+}
+fetchFishs(){
+  this.fishService
+  .getFish()
+  .subscribe((data: Fish[])=>{
+    this.fishs = data;
+    console.log("data..",this.fishs)
+    
+  })
+}
 
 }

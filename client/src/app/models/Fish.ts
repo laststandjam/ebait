@@ -1,4 +1,4 @@
-export class Fish {
+export interface Fish {
   id: number;
   speices: string;
   location: string;
