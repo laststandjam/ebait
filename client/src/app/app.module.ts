@@ -6,12 +6,13 @@ import {HttpClientModule} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { FishComponent } from './components/fish/fish.component';
-import { FishItemComponent } from './components/fish-item/fish-item.component';
 import { ListComponent } from './views/list/list.component';
 import { DetailsComponent } from './views/details/details.component';
 import { CreateComponent } from './views/create/create.component';
 
-import {IssueService} from './issue.service'
+
+import {IssueService} from './issue.service';
+import { FishItemOneComponent } from './components/fish-item-one/fish-item-one.component'
 
 const routes: Routes = [
  {path: 'create', component:CreateComponent,},
@@ -23,10 +24,10 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     FishComponent,
-    FishItemComponent,
     ListComponent,
     DetailsComponent,
     CreateComponent,
+    FishItemOneComponent,
   ],
   imports: [
     MatToolbarModule,

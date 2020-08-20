@@ -1,7 +1,7 @@
 <div>
-    <ul>
-        <li *ngFor="let data of fishs">
-            {{data.price}}
-        </li>
-    </ul>
-</div>
+    
+        <app-fish-item-one *ngFor="let data of fishs" [data]="data">
+        </app-fish-item-one>
+        
+    
+</div> 
