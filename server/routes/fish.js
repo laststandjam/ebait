@@ -7,16 +7,11 @@ router.get("/", (req, res, next) => {
     if (err) {
       console.log("hit", err);
     } else {
-      res.json(fishs);
+      res.send(fishs);
     }
   });
 });
-// router.get("/:id", (req, res, next) => {
-//   Fish.findById(req.params.id, (err, fish) => {
-//     if (err) console.log(err);
-//     else res.json(fish);
-//   });
-// });
+
 router.post("/add", async (req, res, next) => {
   let newFish = new Fish({
     speices: req.body.speices,
@@ -33,11 +28,16 @@ router.post("/add", async (req, res, next) => {
   }
 });
 
-router.delete("/id", function(req, res) {
+router.delete("/:id", function(req, res) {
   Fish.findByIdAndRemove({ _id: req.params.id }, (err, issue) => {
     if (err) res.json(err);
-    else res.json("Remove succesful");
+    else res.send("Remove succesful");
   });
 });
-
+router.get("/:id", (req, res, next) => {
+  Fish.findById(req.params.id, (err, fish) => {
+    if (err) console.log(err);
+    else res.send(fish);
+  });
+});
 module.exports = router;

@@ -6,7 +6,7 @@ const FishSchema = mongoose.Schema({
   strain: { type: String },
   sex: { type: Boolean },
   size: { type: Number },
-  pice: { type: Number }
+  price: { type: Number }
 })
 
 const Fish=module.exports = mongoose.model("Fish", FishSchema)
