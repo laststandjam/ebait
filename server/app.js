@@ -6,9 +6,10 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 const config = require('./config/database')
 const dotenv = require('dotenv').config()
+
 //Routes
 const users = require('./routes/users')
- 
+const fish = require('./routes/fish') 
 //Connect to Db
 mongoose.connect(dotenv.parsed.DB_Connect,{useNewUrlParser:true}, ()=>(console.log('connected to db'))
  )
@@ -17,11 +18,12 @@ const port = 3000;
 
 //middleware
 app.use(cors())
-app.use(express.static(path.join(__dirname, 'client/src')))
+app.use(express.static(path.join(__dirname, '../client/src')))
 app.use(bodyParser.json())
 
 
 app.use('/users', users)
+app.use('/fish', fish)
 
 app.get("/", (req, res) => res.send("Invalid Endpoint"));
 

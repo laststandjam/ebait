@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import {Fish} from '../../models/Fish';
 
 @Component({
-  selector: 'app-fish-add',
-  templateUrl: './fish-add.component.html',
-  styleUrls: ['./fish-add.component.css']
+  selector: 'app-fish-Item',
+  templateUrl: './fish-Item.component.html',
+  styleUrls: ['./fish-Item.component.css']
 })
-export class FishAddComponent implements OnInit {
+export class FishItemComponent implements OnInit {
   @Input() fish: Fish
   constructor() { }
 
