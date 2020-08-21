@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Component } from '@angular/core';
+import { NgModule} from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {FormsModule} from '@angular/forms'
 import { Routes, RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http'
 
@@ -9,16 +10,23 @@ import { FishComponent } from './components/fish/fish.component';
 import { ListComponent } from './views/list/list.component';
 import { DetailsComponent } from './views/details/details.component';
 import { CreateComponent } from './views/create/create.component';
+import { RegisterComponent } from './components/register/register.component';
+import {LoginComponent} from './components/login/login.component';
+import { RegistertwoComponent } from './components/registertwo/registertwo.component'
 
+import { UserService } from './service/user.service';
+import { FishService } from './service/fish.service';
 
-import {IssueService} from './issue.service';
-import { FishItemOneComponent } from './components/fish-item-one/fish-item-one.component'
 
 const routes: Routes = [
- {path: 'create', component:CreateComponent,},
- {path: 'fish', component:ListComponent},
-{path: 'fish/:id', component:DetailsComponent},
-{path: "", redirectTo:'list', pathMatch:'full'}
+ 
+  {path: 'create', component:CreateComponent,},
+  {path: 'fish', component:ListComponent},
+  {path: 'fish/:id', component:DetailsComponent},
+  {path: 'login', component: LoginComponent},
+  {path:"register", component: RegistertwoComponent
+}, {path: "", redirectTo:'list', pathMatch:'full'},
+
 ]
 @NgModule({
   declarations: [
@@ -27,15 +35,17 @@ const routes: Routes = [
     ListComponent,
     DetailsComponent,
     CreateComponent,
-    FishItemOneComponent,
+    RegisterComponent,
+    RegistertwoComponent,
   ],
   imports: [
     MatToolbarModule,
     BrowserModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [IssueService],
+  providers: [FishService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
