@@ -1,1 +1,15 @@
-<p>login works!</p>
+<div class="container">
+  <div>
+    <h1>Register</h1>
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input  [(ngModel)]="registerUserData.name" name="name" type="text">
+        <label  for="Email">Email</label>
+        <input [(ngModel)]="registerUserData.email" name="email"type=text id="email">
+        <label for="userName">Username</label>
+        <input [(ngModel)]="registerUserData.userName" name="userName"type="text" id="userName">
+        <label for="password">password</label>
+        <input [(ngModel)]="registerUserData.password" name="password" type="password" id="password">
+          <button (click)="registerUser()"> </button>
+        </div>

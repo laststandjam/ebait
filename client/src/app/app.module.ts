@@ -16,6 +16,7 @@ import { RegistertwoComponent } from './components/registertwo/registertwo.compo
 
 import { UserService } from './service/user.service';
 import { FishService } from './service/fish.service';
+import { LogintwoComponent } from './components/logintwo/logintwo.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: 'create', component:CreateComponent,},
   {path: 'fish', component:ListComponent},
   {path: 'fish/:id', component:DetailsComponent},
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LogintwoComponent},
   {path:"register", component: RegistertwoComponent
 }, {path: "", redirectTo:'list', pathMatch:'full'},
 
@@ -37,6 +38,7 @@ const routes: Routes = [
     CreateComponent,
     RegisterComponent,
     RegistertwoComponent,
+    LogintwoComponent,
   ],
   imports: [
     MatToolbarModule,
