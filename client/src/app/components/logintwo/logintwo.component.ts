@@ -15,7 +15,7 @@ export class LogintwoComponent implements OnInit {
   ngOnInit(): void {
   }
   logIn(){
-    console.log(this.logInData)
+   this.userService.login(this.logInData.email, this.logInData.password).subscribe(res=>console.log(res))
   }
 
 }
