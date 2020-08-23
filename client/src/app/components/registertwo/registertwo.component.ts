@@ -13,7 +13,7 @@ export class RegistertwoComponent implements OnInit {
   registerUserData = {
    name: "",
     email: "",
-    userame: "",
+    userName: "",
     password: ""
   }
   constructor(private userService: UserService) { }
@@ -24,6 +24,8 @@ export class RegistertwoComponent implements OnInit {
   registerUser(){
     this.userService.register(this.registerUserData).subscribe(res=>console.log(res))
   }
+
+  
 
   }
 

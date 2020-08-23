@@ -1,7 +1,7 @@
 export interface User {
   
     name: string,
-    username: string,
+    userName: string,
     email: string,
     password: string
     token?:string
