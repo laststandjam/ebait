@@ -52,10 +52,11 @@ router.post("/register", async (req, res, next) => {
 });
 router.post("/login", async (req, res, next) => {
   const { error } = loginSchema.validate;
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return  res.status(400).send(error.details[0].message);
 
   const user = await User.findOne({ email: req.body.email });
-  if (!user) return res.status(400).send("email does not exists");
+  if (!user){ console.log(req) 
+    return req, res.status(400).send("email does not exists")}
 
   const validPass = await bcrypt.compare(req.body.password, user.password)
   if(!validPass)return res.status(400).send('password is incorrect')
