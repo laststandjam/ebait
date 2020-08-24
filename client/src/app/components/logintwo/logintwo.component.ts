@@ -14,8 +14,12 @@ export class LogintwoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  logIn(){
-   this.userService.login(this.logInData.email, this.logInData.password).subscribe(res=>console.log(res))
+  logIn(){ console.log('hit 1')
+   this.userService.login(this.logInData)
+  .subscribe(
+   res=>console.log(res),
+   err=>console.log(err)
+  )
   }
 
 }

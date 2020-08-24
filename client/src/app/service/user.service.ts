@@ -24,13 +24,9 @@ export class UserService {
         return this.userSubject.value;
     }
 
-    login(email, password) {
-        return this.http.post<User>(`${environment.apiUrl}/users/login`, { email, password })
-            .pipe(map(user => {
-                localStorage.setItem('user', JSON.stringify(user));
-                this.userSubject.next(user);
-                return user;
-            }));
+    login(user) {
+        return this.http.post<any>(`${environment.apiUrl}/users/login`, user)
+
     }
     logout() {
         // remove user from local storage and set current user to null

@@ -51,18 +51,20 @@ router.post("/register", async (req, res, next) => {
   }
 });
 router.post("/login", async (req, res, next) => {
+ console.log(req)
   const { error } = loginSchema.validate;
-  if (error) return  res.status(400).send(error.details[0].message);
-
+  if (error){ console.log(req)
+    res.status(400).send(error.details[0].message)}
   const user = await User.findOne({ email: req.body.email });
   if (!user){ console.log(req) 
     return req, res.status(400).send("email does not exists")}
-
-  const validPass = await bcrypt.compare(req.body.password, user.password)
-  if(!validPass)return res.status(400).send('password is incorrect')
   
-  const token = jwt.sign({_id: user._id}, dotenv.parsed.TOKEN_SECRET)
-  res.header('auth-token', token).send(token)
+    // const validPass = await bcrypt.compare(req.body.password, user.password)
+  if(req.body.password != user.password)return res.status(400).send('password is incorrect')
+  
+  return req, res.send(user)
+  // const token = jwt.sign({_id: user._id}, dotenv.parsed.TOKEN_SECRET)
+  // res.header('auth-token', token).send(token)
  
 });
 router.get("/profile", (req, res, next) => {
