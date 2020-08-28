@@ -17,7 +17,9 @@ export class LogintwoComponent implements OnInit {
   logIn(){ console.log('hit 1')
    this.userService.login(this.logInData)
   .subscribe(
-   res=>console.log(res),
+   res=>{console.log(res)
+    localStorage.setItem('token', res.token)
+  },
    err=>console.log(err)
   )
   }

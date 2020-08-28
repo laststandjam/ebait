@@ -21,7 +21,9 @@ export class LoginComponent implements OnInit {
   }
 
   registerUser(){
-    this.userService.register(this.registerUserData).subscribe(res=>console.log(res))
+    this.userService.register(this.registerUserData).subscribe(
+      console.log
+    )
   }
 
   }
