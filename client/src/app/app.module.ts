@@ -15,12 +15,13 @@ import { LogintwoComponent } from './components/logintwo/logintwo.component';
 //services
 import { UserService } from './service/user.service';
 import { FishService } from './service/fish.service';
+import {AuthGuard} from './auth.guard'
 
 
 
 const routes: Routes = [
  
-  {path: 'create', component:CreateComponent,},
+  {path: 'create', component:CreateComponent, canActivate:[AuthGuard]},
   {path: 'fish', component:ListComponent},
   {path: 'fish/:id', component:DetailsComponent},
   {path: 'login', component: LogintwoComponent},
@@ -39,13 +40,13 @@ const routes: Routes = [
     LogintwoComponent,
   ],
   imports: [
-    MatToolbarModule,
+  MatToolbarModule,
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
     FormsModule
   ],
-  providers: [FishService, UserService],
+  providers: [FishService, UserService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
