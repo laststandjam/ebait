@@ -3,7 +3,7 @@ import { NgModule} from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FormsModule} from '@angular/forms'
 import { Routes, RouterModule } from '@angular/router';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 //components
 import { AppComponent } from './app.component';
 import { FishComponent } from './components/fish/fish.component';
@@ -12,10 +12,12 @@ import { DetailsComponent } from './views/details/details.component';
 import { CreateComponent } from './views/create/create.component';
 import { RegistertwoComponent } from './components/registertwo/registertwo.component'
 import { LogintwoComponent } from './components/logintwo/logintwo.component';
+import { FishItemOneComponent } from './components/fish-item-one/fish-item-one.component';
 //services
 import { UserService } from './service/user.service';
 import { FishService } from './service/fish.service';
 import {AuthGuard} from './auth.guard'
+import {TokenInterceptorService} from './service/token-interceptor.service'
 
 
 
@@ -38,15 +40,20 @@ const routes: Routes = [
     CreateComponent,
     RegistertwoComponent,
     LogintwoComponent,
+    FishItemOneComponent
   ],
   imports: [
-  MatToolbarModule,
+    MatToolbarModule,
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
     FormsModule
   ],
-  providers: [FishService, UserService, AuthGuard],
+  providers: [FishService, UserService, AuthGuard,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

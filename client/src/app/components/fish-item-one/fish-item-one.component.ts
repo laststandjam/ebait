@@ -6,7 +6,7 @@ import {Fish} from "../../models/Fish"
   styleUrls: ['./fish-item-one.component.css']
 })
 export class FishItemOneComponent implements OnInit {
- @Input() data: Fish
+ @Input() fish: Fish
   constructor() { }
 
   ngOnInit(): void {
