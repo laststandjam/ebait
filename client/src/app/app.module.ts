@@ -17,7 +17,8 @@ import { FishItemOneComponent } from './components/fish-item-one/fish-item-one.c
 import { UserService } from './service/user.service';
 import { FishService } from './service/fish.service';
 import {AuthGuard} from './auth.guard'
-import {TokenInterceptorService} from './service/token-interceptor.service'
+import {TokenInterceptorService} from './service/token-interceptor.service';
+import { NavbarComponent } from './components/navbar/navbar.component'
 
 
 
@@ -40,7 +41,8 @@ const routes: Routes = [
     CreateComponent,
     RegistertwoComponent,
     LogintwoComponent,
-    FishItemOneComponent
+    FishItemOneComponent,
+    NavbarComponent
   ],
   imports: [
     MatToolbarModule,

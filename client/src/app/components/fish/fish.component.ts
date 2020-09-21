@@ -20,8 +20,8 @@ fetchFishs(){
   this.fishService
   .getFish()
   .subscribe((res)=>{
-    this.fishes = res;
-    console.log("data..",this.fishes)
+    this.fishes = res
+    console.log(this.fishes)
     
   })
 }
